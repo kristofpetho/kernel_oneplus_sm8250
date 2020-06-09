@@ -491,7 +491,7 @@ rrm_process_beacon_report_req(struct mac_context *mac,
 			      struct pe_session *pe_session)
 {
 	struct scheduler_msg mmhMsg = {0};
-	tpSirBeaconReportReqInd pSmeBcnReportReq;
+	tpSirBeaconReportReqInd pSmeBcnReportReq = NULL;
 	uint8_t num_channels = 0, num_APChanReport;
 	uint16_t measDuration, maxMeasduration;
 	int8_t maxDuration;
