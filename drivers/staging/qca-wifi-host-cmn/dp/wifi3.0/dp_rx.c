@@ -1028,7 +1028,7 @@ static inline bool dp_rx_adjust_nbuf_len(qdf_nbuf_t nbuf, uint16_t *mpdu_len)
  */
 qdf_nbuf_t dp_rx_sg_create(qdf_nbuf_t nbuf)
 {
-	qdf_nbuf_t parent, next, frag_list;
+	qdf_nbuf_t parent, next = NULL, frag_list;
 	uint16_t frag_list_len = 0;
 	uint16_t mpdu_len;
 	bool last_nbuf;
