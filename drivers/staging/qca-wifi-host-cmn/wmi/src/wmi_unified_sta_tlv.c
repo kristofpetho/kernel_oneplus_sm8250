@@ -1488,7 +1488,7 @@ static QDF_STATUS extract_sar2_result_event_tlv(void *handle,
 		return QDF_STATUS_E_INVAL;
 	}
 
-	WMI_LOGI("SAR2 result: %s",
+	WMI_LOGD("SAR2 result: %s",
 		 wmi_sar2_result_string(sar2_fixed_param->result));
 
 	return QDF_STATUS_SUCCESS;
@@ -2126,7 +2126,7 @@ static QDF_STATUS send_pdev_set_hw_mode_cmd_tlv(wmi_unified_t wmi_handle,
 	cmd->pdev_id = wmi_handle->ops->convert_pdev_id_host_to_target(
 							WMI_HOST_PDEV_ID_SOC);
 	cmd->hw_mode_index = hw_mode_index;
-	WMI_LOGI("%s: HW mode index:%d", __func__, cmd->hw_mode_index);
+	WMI_LOGD("%s: HW mode index:%d", __func__, cmd->hw_mode_index);
 
 	wmi_mtrace(WMI_PDEV_SET_HW_MODE_CMDID, NO_SESSION, 0);
 	if (wmi_unified_cmd_send(wmi_handle, buf, len,
