@@ -337,7 +337,7 @@
  */
 #define CFG_ENABLE_SELF_RECOVERY CFG_INI_BOOL( \
 	"gEnableSelfRecovery", \
-	0, \
+	1, \
 	"Enable Self Recovery")
 
 /*
