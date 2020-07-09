@@ -495,11 +495,11 @@ static inline void dp_peer_map_ast(struct dp_soc *soc,
 		return;
 	}
 
-	QDF_TRACE(QDF_MODULE_ID_DP, QDF_TRACE_LEVEL_ERROR,
-		  "%s: peer %pK ID %d vid %d mac %02x:%02x:%02x:%02x:%02x:%02x",
-		  __func__, peer, hw_peer_id, vdev_id, mac_addr[0],
-		  mac_addr[1], mac_addr[2], mac_addr[3],
-		  mac_addr[4], mac_addr[5]);
+//	QDF_TRACE(QDF_MODULE_ID_DP, QDF_TRACE_LEVEL_ERROR,
+//		  "%s: peer %pK ID %d vid %d mac %02x:%02x:%02x:%02x:%02x:%02x",
+//		  __func__, peer, hw_peer_id, vdev_id, mac_addr[0],
+//		  mac_addr[1], mac_addr[2], mac_addr[3],
+//		  mac_addr[4], mac_addr[5]);
 
 	qdf_spin_lock_bh(&soc->ast_lock);
 
@@ -1382,19 +1382,19 @@ static inline struct dp_peer *dp_peer_find_add_id(struct dp_soc *soc,
 	/* check if there's already a peer object with this MAC address */
 	peer = dp_peer_find_hash_find(soc, peer_mac_addr,
 		0 /* is aligned */, vdev_id);
-	QDF_TRACE(QDF_MODULE_ID_DP, QDF_TRACE_LEVEL_ERROR,
-		  "%s: peer %pK ID %d vid %d mac %02x:%02x:%02x:%02x:%02x:%02x",
-		  __func__, peer, peer_id, vdev_id, peer_mac_addr[0],
-		  peer_mac_addr[1], peer_mac_addr[2], peer_mac_addr[3],
-		  peer_mac_addr[4], peer_mac_addr[5]);
+//	QDF_TRACE(QDF_MODULE_ID_DP, QDF_TRACE_LEVEL_ERROR,
+//		  "%s: peer %pK ID %d vid %d mac %02x:%02x:%02x:%02x:%02x:%02x",
+//		  __func__, peer, peer_id, vdev_id, peer_mac_addr[0],
+//		  peer_mac_addr[1], peer_mac_addr[2], peer_mac_addr[3],
+//		  peer_mac_addr[4], peer_mac_addr[5]);
 
 	if (peer) {
 		/* peer's ref count was already incremented by
 		 * peer_find_hash_find
 		 */
-		QDF_TRACE(QDF_MODULE_ID_DP, QDF_TRACE_LEVEL_INFO,
-			  "%s: ref_cnt: %d", __func__,
-			   qdf_atomic_read(&peer->ref_cnt));
+//		QDF_TRACE(QDF_MODULE_ID_DP, QDF_TRACE_LEVEL_INFO,
+//			  "%s: ref_cnt: %d", __func__,
+//			   qdf_atomic_read(&peer->ref_cnt));
 		if (!soc->peer_id_to_obj_map[peer_id])
 			soc->peer_id_to_obj_map[peer_id] = peer;
 		else {
@@ -2659,9 +2659,9 @@ int dp_addba_requestprocess_wifi3(void *peer_handle,
 		buffersize = rx_tid->rx_ba_win_size_override;
 		rx_tid->userstatuscode = IEEE80211_STATUS_SUCCESS;
 	} else {
-		QDF_TRACE(QDF_MODULE_ID_DP, QDF_TRACE_LEVEL_INFO,
-			  "%s restore BA win %d based on addba req",
-			  __func__, buffersize);
+//		QDF_TRACE(QDF_MODULE_ID_DP, QDF_TRACE_LEVEL_INFO,
+//			  "%s restore BA win %d based on addba req",
+//			  __func__, buffersize);
 
 		rx_tid->userstatuscode = IEEE80211_STATUS_SUCCESS;
 	}

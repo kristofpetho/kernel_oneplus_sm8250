@@ -1346,21 +1346,21 @@ send_roam_scan_offload_mode_cmd_tlv(wmi_unified_t wmi_handle,
 				if (roam_req->fw_okc) {
 					WMI_SET_ROAM_OFFLOAD_OKC_ENABLED
 						(roam_offload_11i->flags);
-					WMI_LOGI("LFR3:OKC enabled");
+					WMI_LOGD("LFR3:OKC enabled");
 				} else {
 					WMI_SET_ROAM_OFFLOAD_OKC_DISABLED
 						(roam_offload_11i->flags);
-					WMI_LOGI("LFR3:OKC disabled");
+					WMI_LOGD("LFR3:OKC disabled");
 				}
 
 				if (roam_req->fw_pmksa_cache) {
 					WMI_SET_ROAM_OFFLOAD_PMK_CACHE_ENABLED
 						(roam_offload_11i->flags);
-					WMI_LOGI("LFR3:PMKSA caching enabled");
+					WMI_LOGD("LFR3:PMKSA caching enabled");
 				} else {
 					WMI_SET_ROAM_OFFLOAD_PMK_CACHE_DISABLED
 						(roam_offload_11i->flags);
-					WMI_LOGI("LFR3:PMKSA caching disabled");
+					WMI_LOGD("LFR3:PMKSA caching disabled");
 				}
 
 				wmi_fill_sae_single_pmk_param(roam_req,

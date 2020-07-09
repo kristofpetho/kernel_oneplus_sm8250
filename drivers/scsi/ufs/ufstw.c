@@ -502,11 +502,11 @@ static inline void ufstw_cancel_lu_jobs(struct ufstw_lu *tw)
 	int ret;
 
 	ret = cancel_delayed_work_sync(&tw->tw_flush_work);
-	INIT_INFO("cancel_delayed_work_sync(tw_flush_work) ufstw_lu%d = %d",
-		  tw->lun, ret);
+//	INIT_INFO("cancel_delayed_work_sync(tw_flush_work) ufstw_lu%d = %d",
+//		  tw->lun, ret);
 	ret = cancel_work_sync(&tw->tw_lifetime_work);
-	INIT_INFO("cancel_work_sync(tw_lifetime_work) ufstw_lu%d = %d",
-		  tw->lun, ret);
+//	INIT_INFO("cancel_work_sync(tw_lifetime_work) ufstw_lu%d = %d",
+//		  tw->lun, ret);
 }
 
 static inline int ufstw_version_check(struct ufstw_dev_info *tw_dev_info)
@@ -796,7 +796,7 @@ void ufstw_suspend(struct ufsf_feature *ufsf)
 			continue;
 
 		ufstw_lu_get(tw);
-		INFO_MSG("ufstw_lu%d goto suspend", lun);
+//		INFO_MSG("ufstw_lu%d goto suspend", lun);
 		ufstw_cancel_lu_jobs(tw);
 		ufstw_lu_put(tw);
 	}

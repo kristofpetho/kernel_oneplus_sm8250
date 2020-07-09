@@ -819,8 +819,8 @@ struct bq27541_device_info *di, int suspend_time_ms)
 			fg_soc_changed = (soc < TWENTY_PERCENT
 					|| soc_delt > di->lcd_off_delt_soc
 					|| suspend_time_ms > TEN_MINUTES);
-			pr_info("suspend_time_ms=%d,soc_delt=%d,di->lcd_off_delt_soc=%d\n",
-			suspend_time_ms, soc_delt, di->lcd_off_delt_soc);
+//			pr_info("suspend_time_ms=%d,soc_delt=%d,di->lcd_off_delt_soc=%d\n",
+//			suspend_time_ms, soc_delt, di->lcd_off_delt_soc);
 			if (fg_soc_changed) {
 				if (suspend_time_ms/TEN_MINUTES) {
 				di->soc_pre -=
@@ -847,8 +847,8 @@ struct bq27541_device_info *di, int suspend_time_ms)
 
 read_soc_err:
 	if (di->soc_pre) {
-		dev_warn(di->dev,
-		"read_soc_exit ,di->soc_pre=%d\n", di->soc_pre);
+//		dev_warn(di->dev,
+//		"read_soc_exit ,di->soc_pre=%d\n", di->soc_pre);
 		return di->soc_pre;
 	} else
 		return 0;
@@ -1088,13 +1088,13 @@ static int bq27541_set_lcd_off_status(int off)
 {
 	int soc;
 
-	pr_info("off=%d\n", off);
+	pr_debug("off=%d\n", off);
 	if (bq27541_di) {
 		if (off) {
 			soc = bq27541_get_batt_bq_soc();
 			bq27541_di->lcd_off_delt_soc =
 					bq27541_di->soc_pre - soc;
-			pr_info("lcd_off_delt_soc:%d,soc=%d,soc_pre=%d\n",
+			pr_debug("lcd_off_delt_soc:%d,soc=%d,soc_pre=%d\n",
 			bq27541_di->lcd_off_delt_soc, soc,
 					bq27541_di->soc_pre);
 			get_current_time(&bq27541_di->lcd_off_time);
@@ -1549,7 +1549,7 @@ static struct platform_device this_device = {
 
 static void update_pre_capacity_func(struct work_struct *w)
 {
-	pr_info("enter\n");
+//	pr_info("enter\n");
 	bq27541_set_allow_reading(true);
 	bq27541_get_battery_temperature();
 	bq27541_battery_soc(bq27541_di, update_pre_capacity_data.suspend_time);
@@ -1557,7 +1557,7 @@ static void update_pre_capacity_func(struct work_struct *w)
 	bq27541_get_batt_full_chg_capacity();
 	bq27541_set_allow_reading(false);
 	__pm_relax(&bq27541_di->update_soc_wake_lock);
-	pr_info("exit\n");
+//	pr_info("exit\n");
 }
 
 #define MAX_RETRY_COUNT	5
@@ -2123,11 +2123,11 @@ static int bq27541_battery_resume(struct device *dev)
 		return 0;
 	}
 	suspend_time =  di->rtc_resume_time - di->rtc_suspend_time;
-	pr_info("suspend_time=%d\n", suspend_time);
+	pr_debug("suspend_time=%d\n", suspend_time);
 	update_pre_capacity_data.suspend_time = suspend_time;
 
 	if (di->rtc_resume_time - di->lcd_off_time >= TWO_POINT_FIVE_MINUTES) {
-		pr_err("di->rtc_resume_time - di->lcd_off_time=%ld\n",
+		pr_debug("di->rtc_resume_time - di->lcd_off_time=%ld\n",
 				di->rtc_resume_time - di->lcd_off_time);
 		__pm_stay_awake(&di->update_soc_wake_lock);
 		get_current_time(&di->lcd_off_time);

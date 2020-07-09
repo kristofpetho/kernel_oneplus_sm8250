@@ -950,12 +950,12 @@ static QDF_STATUS extract_gtk_rsp_event_tlv(wmi_unified_t wmi_handle,
 
 	param_buf = (WMI_GTK_OFFLOAD_STATUS_EVENTID_param_tlvs *)evt_buf;
 	if (!param_buf) {
-		WMI_LOGE("gtk param_buf is NULL");
+		WMI_LOGD("gtk param_buf is NULL");
 		return QDF_STATUS_E_INVAL;
 	}
 
 	if (len < sizeof(WMI_GTK_OFFLOAD_STATUS_EVENT_fixed_param)) {
-		WMI_LOGE("Invalid length for GTK status");
+		WMI_LOGD("Invalid length for GTK status");
 		return QDF_STATUS_E_INVAL;
 	}
 
@@ -1442,7 +1442,7 @@ static QDF_STATUS send_enable_disable_packet_filter_cmd_tlv(
 	else
 		cmd->enable = PACKET_FILTER_SET_DISABLE;
 
-	WMI_LOGE("%s: Packet filter enable %d for vdev_id %d",
+	WMI_LOGD("%s: Packet filter enable %d for vdev_id %d",
 		 __func__, cmd->enable, vdev_id);
 
 	wmi_mtrace(WMI_PACKET_FILTER_ENABLE_CMDID, cmd->vdev_id, 0);
@@ -1520,7 +1520,7 @@ static QDF_STATUS send_config_packet_filter_cmd_tlv(wmi_unified_t wmi_handle,
 		}
 	}
 
-	WMI_LOGE("Packet filter action %d filter with id: %d, num_params=%d",
+	WMI_LOGD("Packet filter action %d filter with id: %d, num_params=%d",
 		 cmd->filter_action, cmd->filter_id, cmd->num_params);
 	/* send the command along with data */
 	wmi_mtrace(WMI_PACKET_FILTER_CONFIG_CMDID, cmd->vdev_id, 0);
