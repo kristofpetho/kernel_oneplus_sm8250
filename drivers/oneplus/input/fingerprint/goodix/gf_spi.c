@@ -666,13 +666,13 @@ static const struct attribute_group gf_attribute_group = {
 static struct fp_underscreen_info fp_tpinfo ={0};
 int opticalfp_irq_handler(struct fp_underscreen_info* tp_info)
 {
-	pr_info("[info]:%s", __func__);
+	pr_debug("[info]:%s", __func__);
 
 	if (gf.spi == NULL) {
 		return 0;
 	}
 	fp_tpinfo = *tp_info;
-	pr_err("fp_tpinfo.x = %d, fp_tpinfo.y = %d, fp_tpinfo.touch_state = %d\n", fp_tpinfo.x, fp_tpinfo.y,fp_tpinfo.touch_state);
+	pr_debug("fp_tpinfo.x = %d, fp_tpinfo.y = %d, fp_tpinfo.touch_state = %d\n", fp_tpinfo.x, fp_tpinfo.y,fp_tpinfo.touch_state);
 	if (fp_tpinfo.touch_state == 1) {
 		fp_tpinfo.touch_state = GF_NET_EVENT_TP_TOUCHDOWN;
 		sendnlmsg_tp(&fp_tpinfo,sizeof(fp_tpinfo));
@@ -719,7 +719,7 @@ static int goodix_fb_state_chg_callback(struct notifier_block *nb,
 
 	if (val != FB_EARLY_EVENT_BLANK)
 		return 0;
-	pr_info("[info] %s go to the goodix_fb_state_chg_callback value = %d\n",
+	pr_debug("[info] %s go to the goodix_fb_state_chg_callback value = %d\n",
 			__func__, (int)val);
 	gf_dev = container_of(nb, struct gf_dev, notifier);
 
@@ -753,7 +753,7 @@ static int goodix_fb_state_chg_callback(struct notifier_block *nb,
 			}
 			break;
 		default:
-			pr_info("%s defalut\n", __func__);
+			pr_debug("%s defalut\n", __func__);
 			break;
 		}
 	}
@@ -772,7 +772,7 @@ static int goodix_fb_state_chg_callback(
 	struct drm_panel_notifier *evdata = data;
 	unsigned int blank;
 	char msg = 0;
-	pr_info("[info] %s go to the msm_drm_notifier_callback value = %d\n",
+	pr_debug("[info] %s go to the msm_drm_notifier_callback value = %d\n",
 			__func__, (int)val);
 	if (val != DRM_PANEL_EARLY_EVENT_BLANK &&
 		val != DRM_PANEL_ONSCREENFINGERPRINT_EVENT)
@@ -785,17 +785,17 @@ static int goodix_fb_state_chg_callback(
 
 		switch (blank) {
 		case 0:
-			pr_info("[%s] UI disappear\n", __func__);
+			pr_debug("[%s] UI disappear\n", __func__);
 			msg = GF_NET_EVENT_UI_DISAPPEAR;
 			sendnlmsg(&msg);
 			break;
 		case 1:
-			pr_info("[%s] UI ready\n", __func__);
+			pr_debug("[%s] UI ready\n", __func__);
 			msg = GF_NET_EVENT_UI_READY;
 			sendnlmsg(&msg);
 			break;
 		default:
-			pr_info("[%s] Unknown EVENT\n", __func__);
+			pr_debug("[%s] Unknown EVENT\n", __func__);
 			break;
 		}
 		return 0;
@@ -840,7 +840,7 @@ static int goodix_fb_state_chg_callback(
 				NULL, dev_attr_screen_state.attr.name);
 			break;
 		default:
-			pr_info("%s defalut\n", __func__);
+			pr_debug("%s defalut\n", __func__);
 			break;
 		}
 	}
