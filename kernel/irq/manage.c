@@ -723,7 +723,7 @@ static bool irq_allow_wakeup_factory(int irq)
 
 static int disable_irq_wakeup_one(int irq)
 {
-	int error;
+	int error = 0;
 	struct irq_desc *desc = irq_to_desc(irq);
 
 	if (irqd_is_wakeup_set(irq_get_irq_data(irq)) && !irq_allow_wakeup_factory(irq)) {
