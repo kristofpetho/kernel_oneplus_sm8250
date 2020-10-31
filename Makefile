@@ -690,6 +690,9 @@ KBUILD_CFLAGS   += -O2
 endif
 endif
 
+# Enable Clang's CPU optimization
+KBUILD_CFLAGS	+= -mcpu=cortex-a55
+
 KBUILD_CFLAGS += $(call cc-ifversion, -lt, 0409, \
 			$(call cc-disable-warning,maybe-uninitialized,))
 
