@@ -961,7 +961,7 @@ static int qpnp_pon_input_dispatch(struct qpnp_pon *pon, u32 pon_type)
 	case PON_KPDPWR:
 		pon_rt_bit = QPNP_PON_KPDPWR_N_SET;
 		if ((pon_rt_sts & pon_rt_bit) == 0) {
-			pr_info("Power-Key UP\n");
+			pr_debug("Power-Key UP\n");
 			set_pwr_status(KEY_RELEASED);
 			schedule_work(&pon->up_work);
 			cancel_delayed_work(&pon->press_work);
@@ -971,7 +971,7 @@ static int qpnp_pon_input_dispatch(struct qpnp_pon *pon, u32 pon_type)
 			panic_flush_device_cache_circled_off();
 #endif
 		} else {
-			pr_info("Power-Key DOWN\n");
+			pr_debug("Power-Key DOWN\n");
 			is_black_screen =  dsi_panel_backlight_get() != 0 ?
 					   false : true;
 			schedule_delayed_work(&pon->press_work, msecs_to_jiffies(4000));
