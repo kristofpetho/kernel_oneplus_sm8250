@@ -22,13 +22,13 @@ static inline void __print_last_io(void)
 	if (!last_io.len)
 		return;
 
-	trace_printk("%3x:%3x %4x %-16s %2x %5x %5x %12x %4x\n",
+	/* trace_printk("%3x:%3x %4x %-16s %2x %5x %5x %12x %4x\n",
 			last_io.major, last_io.minor,
 			last_io.pid, "----------------",
 			last_io.type,
 			last_io.fio.op, last_io.fio.op_flags,
 			last_io.fio.new_blkaddr,
-			last_io.len);
+			last_io.len); */
 	memset(&last_io, 0, sizeof(last_io));
 }
 
@@ -76,9 +76,9 @@ retry:
 		goto retry;
 	}
 
-	trace_printk("%3x:%3x %4x %-16s\n",
+	/* trace_printk("%3x:%3x %4x %-16s\n",
 			MAJOR(inode->i_sb->s_dev), MINOR(inode->i_sb->s_dev),
-			pid, current->comm);
+			pid, current->comm); */
 out:
 	spin_unlock(&pids_lock);
 	radix_tree_preload_end();

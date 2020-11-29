@@ -155,23 +155,8 @@ module_param_named(systrace_enable, cc_systrace_enable, int, 0644);
 static inline void tracing_mark_write(struct cc_command *cc, int count, bool tsk)
 {
 	if (cc_systrace_enable) {
-		if (tsk) {
-			if (cc_systrace_enable == 2) {
-				int pid = cc->bind_leader ? cc->leader: cc->pid;
-				trace_printk("C|%d|%s-%d|%d\n",
-					CC_TSK_SYSTRACE_MAGIC + cc->category, cc_category_tags_mapping(cc->category), pid, count);
-			} else
-				trace_printk("C|%d|%s|%d\n",
-					CC_TSK_SYSTRACE_MAGIC + cc->category, cc_category_tags_mapping(cc->category), count);
-		} else {
-			if (cc_systrace_enable == 2) {
-				int pid = cc->bind_leader ? cc->leader : cc->pid;
-				trace_printk("C|%d|%s-%d|%d\n",
-					CC_SYSTRACE_MAGIC + cc->category, cc_category_tags_mapping(cc->category), pid, count);
-			} else
-				trace_printk("C|%d|%s|%d\n",
-					CC_SYSTRACE_MAGIC + cc->category, cc_category_tags_mapping(cc->category), count);
-		}
+		if (cc_systrace_enable == 2)
+			int pid = cc->bind_leader ? cc->leader: cc->pid;
 	}
 }
 #else

@@ -776,10 +776,10 @@ static bool adjustment_possible(const struct cluster_data *cluster,
 
 static inline void tracing_mark_write(int serial, char *name, unsigned int value)
 {
-#ifdef TRACE_DEBUG
+#if 0
 	trace_printk("C|%d|%s|%u\n", SYSTRACE_MAGIC+serial, name, value);
 #else
-	pr_info("trace func:%s value:%d\n", name, value);
+	pr_debug("trace func:%s value:%d\n", name, value);
 #endif
 }
 

@@ -60,7 +60,7 @@ struct drm_i915_private;
 #define GEM_DEBUG_BUG_ON(expr)
 #endif
 
-#if IS_ENABLED(CONFIG_DRM_I915_TRACE_GEM)
+#if 0
 #define GEM_TRACE(...) trace_printk(__VA_ARGS__)
 #define GEM_TRACE_DUMP() ftrace_dump(DUMP_ALL)
 #define GEM_TRACE_DUMP_ON(expr) \

@@ -140,7 +140,7 @@ __hfi1_trace_def(IOCTL);
  * messages. Do not check in an enablement for this.
  */
 
-#ifdef HFI1_EARLY_DBG
+#if 0
 #define hfi1_dbg_early(fmt, ...) \
 	trace_printk(fmt, ##__VA_ARGS__)
 #else
