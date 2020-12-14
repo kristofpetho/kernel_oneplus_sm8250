@@ -502,7 +502,7 @@ out:
 	return mismatch;
 }
 
-static void tpd_mgp_init()
+static void tpd_mgp_init(void)
 {
 	int i;
 
