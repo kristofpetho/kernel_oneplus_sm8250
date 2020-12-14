@@ -5180,7 +5180,7 @@ static int select_discard_type_of2fs(struct f2fs_sb_info *sbi, int expect_discar
 	return DPOLICY_BG;
 }
 
-inline void wake_up_odiscard_of2fs(struct f2fs_sb_info *sbi)
+void wake_up_odiscard_of2fs(struct f2fs_sb_info *sbi)
 {
 	struct discard_cmd_control *dcc = SM_I(sbi)->dcc_info;
 
@@ -5191,7 +5191,7 @@ inline void wake_up_odiscard_of2fs(struct f2fs_sb_info *sbi)
 }
 
 
-inline void wake_up_otrim_of2fs(struct f2fs_sb_info *sbi)
+void wake_up_otrim_of2fs(struct f2fs_sb_info *sbi)
 {
 	struct discard_cmd_control *dcc = SM_I(sbi)->dcc_info;
 
