@@ -1608,7 +1608,8 @@ static const struct file_operations proc_runtime_overload_fops = {
 static struct proc_dir_entry *oneplus_healthinfo;
 
 #ifdef CONFIG_ONEPLUS_TASKLOAD_INFO
-static void adjust_window() {
+static void adjust_window(struct timer_list *timer)
+{
 	sample_window.timestamp = jiffies_64;
 	sample_window.window_index++;
 	mod_timer(&task_load_info_timer, jiffies + ohm_sample_time*HZ);  /* 5s */
@@ -1715,7 +1716,7 @@ static int __init oneplus_healthinfo_init(void)
 	sample_window.timestamp = jiffies;
 	sample_window.window_index = 0;
 	timer_setup(&task_load_info_timer, NULL, TIMER_DEFERRABLE);
-	task_load_info_timer.function = &adjust_window;
+	task_load_info_timer.function = adjust_window;
 	task_load_info_timer.expires = jiffies + ohm_sample_time*HZ;
 	add_timer(&task_load_info_timer);
 
