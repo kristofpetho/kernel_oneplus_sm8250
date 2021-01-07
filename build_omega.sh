@@ -16,7 +16,7 @@ mkdir -p out
 echo
 echo "Set DEFCONFIG"
 echo 
-time make O=out CC=clang omega_defconfig
+time make O=out CC=clang AR=llvm-ar LD=ld.lld NM=llvm-nm OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump STRIP=llvm-strip omega_defconfig
 export PATH="/home/kristof/android/clang/bin:/home/kristof/android/binutils/bin:${PATH}"
 export LD_LIBRARY_PATH="/home/kristof/android/clang/lib:/home/kristof/android/clang/lib64:$LD_LIBRARY_PATH"
 
@@ -24,5 +24,5 @@ echo
 echo "Build The Kernel"
 echo 
 
-time make -j$(nproc --all) O=out CC=clang CLANG_TRIPLE=aarch64-linux-gnu- CROSS_COMPILE=aarch64-linux-gnu-
+time make -j$(nproc --all) O=out CC=clang AR=llvm-ar LD=ld.lld NM=llvm-nm OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump STRIP=llvm-strip CLANG_TRIPLE=aarch64-linux-gnu- CROSS_COMPILE=aarch64-linux-gnu-
 find /home/kristof/omega-11.0/out/arch/arm64/boot/dts/vendor/qcom -name '*.dtb' -exec cat {} + > /home/kristof/omega-11.0/out/arch/arm64/boot/dtb
