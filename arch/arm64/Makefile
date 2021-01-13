@@ -18,7 +18,7 @@ ifeq ($(CONFIG_RELOCATABLE), y)
 # Pass --no-apply-dynamic-relocs to restore pre-binutils-2.27 behaviour
 # for relative relocs, since this leads to better Image compression
 # with the relocation offsets always being zero.
-LDFLAGS_vmlinux		+= -shared -Bsymbolic -z notext -z norelro \
+LDFLAGS_vmlinux		+= -shared -Bsymbolic -z notext \
 			$(call ld-option, --no-apply-dynamic-relocs)
 endif
 
@@ -48,6 +48,9 @@ brokengasinst := $(call as-instr,1:\n.inst 0\n.rept . - 1b\n\nnop\n.endr\n,,-DCO
 $(warning Detected assembler with broken .inst; disassembly will be unreliable)
   endif
 endif
+
+# Optimize for sm8250
+KBUILD_CFLAGS   += -mcpu=cortex-a55 -mtune=cortex-a55
 
 ifeq ($(cc-name),clang)
 KBUILD_CFLAGS	+= -mno-implicit-float
