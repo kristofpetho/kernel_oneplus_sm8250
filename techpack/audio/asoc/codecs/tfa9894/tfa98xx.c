@@ -1587,7 +1587,7 @@ static int tfa98xx_set_enable_ctl(struct snd_kcontrol *kcontrol,
 
 	val = ucontrol->value.integer.value[0];
 
-	pr_info("%s: val = %d\n", __func__, val);
+	pr_debug("%s: val = %d\n", __func__, val);
 
 	tfa98xx_playback_enable = val;
 	return 1;
