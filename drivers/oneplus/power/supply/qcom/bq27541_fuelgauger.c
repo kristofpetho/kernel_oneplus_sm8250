@@ -1192,7 +1192,7 @@ static void update_battery_soc_work(struct work_struct *work)
 	static int pre_plugin_status = 0;
 	static bool pre_dash_started = 0;
 
-	pr_info("plugin:%d,dash_start:%d:smooth:%d\n",
+	pr_debug("plugin:%d,dash_start:%d:smooth:%d\n",
 				is_usb_pluged(), get_dash_started(),bq27541_di->set_smoothing);
 	switch_flag = REFRESH_TRUE;
 	if (pre_plugin_status != is_usb_pluged()
@@ -2510,7 +2510,7 @@ static int bq27541_battery_suspend(struct device *dev)
 	int ret = 0;
 	struct bq27541_device_info *di = dev_get_drvdata(dev);
 
-	pr_info("bq27541_battery_suspend\n");
+	pr_debug("bq27541_battery_suspend\n");
 	//cancel_delayed_work_sync(&di->battery_soc_work);
 	atomic_set(&di->suspended, 1);
 	ret = get_current_time(&di->rtc_suspend_time);

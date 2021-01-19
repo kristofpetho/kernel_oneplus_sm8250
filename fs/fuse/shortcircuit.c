@@ -151,7 +151,7 @@ int fuse_shortcircuit_setup(struct fuse_conn *fc, struct fuse_req *req)
 
 	req->sct.filp = lower_filp;
 	req->sct.cred = prepare_creds();
-	pr_info("fuse: setup sct:%d, %d\n", fd, flags);
+	pr_debug("fuse: setup sct:%d, %d\n", fd, flags);
 	return 0;
 }
 
