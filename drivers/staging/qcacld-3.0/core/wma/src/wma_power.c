@@ -877,7 +877,7 @@ QDF_STATUS wma_set_power_config(uint8_t vdev_id, enum powersave_mode power)
 		return QDF_STATUS_E_INVAL;
 	}
 
-	WMA_LOGI("configuring power: %d", power);
+	WMA_LOGD("configuring power: %d", power);
 	wma->powersave_mode = power;
 	return wma_unified_set_sta_ps_param(wma->wmi_handle,
 					    vdev_id,
