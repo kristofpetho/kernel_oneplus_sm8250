@@ -257,7 +257,7 @@ QDF_STATUS pmo_get_vdev_bss_peer_mac_addr(struct wlan_objmgr_vdev *vdev,
 
 	peer = wlan_objmgr_vdev_try_get_bsspeer(vdev, WLAN_PMO_ID);
 	if (!peer) {
-		pmo_err("peer is null");
+		pmo_debug("peer is null");
 		return QDF_STATUS_E_INVAL;
 	}
 	wlan_peer_obj_lock(peer);
