@@ -4517,7 +4517,7 @@ static void __hdd_set_multicast_list(struct net_device *dev)
 	int mc_count = 0;
 
 	if (hdd_ctx->hdd_wlan_suspended) {
-		hdd_err_rl("Device is system suspended");
+		hdd_debug_rl("Device is system suspended");
 		return;
 	}
 

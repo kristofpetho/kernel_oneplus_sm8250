@@ -1402,7 +1402,7 @@ static QDF_STATUS extract_sar2_result_event_tlv(void *handle,
 		return QDF_STATUS_E_INVAL;
 	}
 
-	WMI_LOGI("SAR2 result: %s",
+	WMI_LOGD("SAR2 result: %s",
 		 wmi_sar2_result_string(sar2_fixed_param->result));
 
 	return QDF_STATUS_SUCCESS;
