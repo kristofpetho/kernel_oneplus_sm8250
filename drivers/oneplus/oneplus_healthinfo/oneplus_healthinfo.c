@@ -1208,11 +1208,11 @@ static const struct file_operations proc_dstate_fops = {
 
 static ssize_t irq_latency_read(struct file *filp, char __user *buff, size_t count, loff_t *off)
 {
-    int len = 0,i;
+	int len = 0,i;
 	struct irq_latency_para *sched_stat;
 	char *page = kzalloc(2048,GFP_KERNEL);
-    if (!page)
-        return -ENOMEM;
+	if (!page)
+		return -ENOMEM;
 
 	for ( i = 0; i < NR_CPUS; i++) {
 		len += sprintf(page + len, "cpu%d:\n", i);
