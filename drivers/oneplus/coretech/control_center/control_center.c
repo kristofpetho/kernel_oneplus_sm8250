@@ -1275,7 +1275,7 @@ static int cc_ctl_close(struct inode *ip, struct file *fp)
 
 static long cc_ctl_ioctl(struct file *file, unsigned int cmd, unsigned long __user arg)
 {
-	ktime_t begin, end;
+	ktime_t begin = 0, end;
 	s64 t;
 	static s64 tmax = 0;
 
@@ -1397,7 +1397,7 @@ static void __cc_queue_rq(struct cc_async_rq* rq, struct list_head* head)
 static void cc_work(struct work_struct *work)
 {
 	/* time related */
-	ktime_t begin, end;
+	ktime_t begin = 0, end;
 	s64 t;
 	static s64 tmax = 0;
 
@@ -1416,7 +1416,7 @@ static void cc_work(struct work_struct *work)
 
 static int cc_worker(void* arg)
 {
-	ktime_t begin, end;
+	ktime_t begin = 0, end;
 	s64 t;
 	static s64 tmax = 0;
 
