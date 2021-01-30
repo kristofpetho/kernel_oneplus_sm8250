@@ -256,7 +256,7 @@ static int f2fs_do_sync_file(struct file *file, loff_t start, loff_t end,
 	};
 	unsigned int seq_id = 0;
 #ifdef CONFIG_F2FS_BD_STAT
-	u64 fsync_begin = 0, fsync_end = 0, wr_file_end, cp_begin = 0,
+	u64 fsync_begin = 0, fsync_end = 0, wr_file_end = 0, cp_begin = 0,
 	    cp_end = 0, sync_node_begin = 0, sync_node_end = 0,
 	    flush_begin = 0, flush_end = 0;
 #endif

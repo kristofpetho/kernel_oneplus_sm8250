@@ -1577,7 +1577,7 @@ int f2fs_write_checkpoint(struct f2fs_sb_info *sbi, struct cp_control *cpc)
 	int err = 0;
 #ifdef CONFIG_F2FS_BD_STAT
 	u64 cp_begin = 0, cp_end, cp_submit_end = 0, discard_begin, discard_end;
-	u64 cp_flush_meta_time, cp_flush_meta_begin;
+	u64 cp_flush_meta_time = 0, cp_flush_meta_begin;
 #endif
 
 	if (f2fs_readonly(sbi->sb) || f2fs_hw_is_readonly(sbi))
