@@ -3890,7 +3890,7 @@ static int ufshcd_queuecommand(struct Scsi_Host *host, struct scsi_cmnd *cmd)
 	bool has_read_lock = false;
 #if defined(CONFIG_UFSFEATURE) && defined(CONFIG_UFSHPB)
 	struct scsi_cmnd *pre_cmd;
-	struct ufshcd_lrb *add_lrbp;
+	struct ufshcd_lrb *add_lrbp = NULL;
 	int add_tag;
 	int pre_req_err = -EBUSY;
 	int lun = ufshcd_scsi_to_upiu_lun(cmd->device->lun);
