@@ -283,7 +283,7 @@ static long vma_compute_subtree_gap(struct vm_area_struct *vma)
 {
 	unsigned long max, prev_end, subtree_gap;
 #ifdef CONFIG_VM_FRAGMENT_MONITOR
-	unsigned long gl_tmp, gl_gap;
+	unsigned long gl_tmp, gl_gap = 0;
 	unsigned long gpu_vm_end;
 	unsigned long mmap_limit;
 	bool va32bit = false;
