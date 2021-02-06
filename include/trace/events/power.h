@@ -204,7 +204,7 @@ TRACE_EVENT(find_freq,
 	),
 
 	TP_printk(
-		"target[%lu]=%lu final[%lu]=%lu cpu=%d op_enable=%d dp_level_mod=%d dp_level=%d",
+		"target[%lu]=%lu final[%lu]=%lu cpu=%lu op_enable=%d dp_level_mod=%d dp_level=%d",
 		(unsigned long)__entry->target_idx,
 		(unsigned long)__entry->target_freq,
 		(unsigned long)__entry->final_idx,
