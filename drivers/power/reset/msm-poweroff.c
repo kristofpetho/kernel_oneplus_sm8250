@@ -196,7 +196,7 @@ static void set_dload_mode(int on)
 		/* Make sure the download cookie is updated */
 		mb();
 		read_ret = __raw_readl(dload_mode_addr);
-		pr_err("[MDM] dload_mode value [0x%X]\n", read_ret);
+		pr_err("[MDM] dload_mode value [0x%llX]\n", read_ret);
 	} else if (dload_mode_addr) {
 		__raw_writel(on ? 0xE47B337D : 0, dload_mode_addr);
 		__raw_writel(on ? 0xCE14091A : 0,
