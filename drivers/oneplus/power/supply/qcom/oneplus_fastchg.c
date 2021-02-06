@@ -664,19 +664,19 @@ static inline int opchg_mcu_switch_to_upgrade_mode(struct fastchg_device_info *d
 	}
 	rc = opchg_mcu_enable(di, true);
 	if (rc < 0) {
-		pr_err("%d: set mcu enable error, rc=%d\n", __LINE__);
+		pr_err("%d: set mcu enable error, rc=%d\n", __LINE__, rc);
 		goto error;
 	}
 	usleep_range(5000, 5001);
 	rc = opchg_mcu_enable(di, false);
 	if (rc < 0) {
-		pr_err("%d: set mcu disable error, rc=%d\n", __LINE__);
+		pr_err("%d: set mcu disable error, rc=%d\n", __LINE__, rc);
 		goto error;
 	}
 	usleep_range(10000, 10001);
 	rc = opchg_mcu_enable(di, true);
 	if (rc < 0) {
-		pr_err("%d: set mcu enable error, rc=%d\n", __LINE__);
+		pr_err("%d: set mcu enable error, rc=%d\n", __LINE__, rc);
 		goto error;
 	}
 	msleep(2500);
@@ -710,7 +710,7 @@ int opchg_mcu_action(enum mcu_action_mode mode)
 	case ACTION_MODE_ENABLE:
 		rc = opchg_mcu_enable(fastchg_di, true);
 		if (rc < 0) {
-			pr_err("%d: set mcu enable error, rc=%d\n", __LINE__);
+			pr_err("%d: set mcu enable error, rc=%d\n", __LINE__, rc);
 			goto error;
 		}
 		break;
@@ -719,19 +719,19 @@ int opchg_mcu_action(enum mcu_action_mode mode)
 			(void)opchg_switch_dmdm(fastchg_di, DPDM_MODE_NORMAL);
 		rc = opchg_mcu_enable(fastchg_di, true);
 		if (rc < 0) {
-			pr_err("%d: set mcu enable error, rc=%d\n", __LINE__);
+			pr_err("%d: set mcu enable error, rc=%d\n", __LINE__, rc);
 			goto error;
 		}
 		usleep_range(5000, 5001);
 		rc = opchg_mcu_enable(fastchg_di, false);
 		if (rc < 0) {
-			pr_err("%d: set mcu disable error, rc=%d\n", __LINE__);
+			pr_err("%d: set mcu disable error, rc=%d\n", __LINE__, rc);
 			goto error;
 		}
 		usleep_range(10000, 10001);
 		rc = opchg_mcu_enable(fastchg_di, true);
 		if (rc < 0) {
-			pr_err("%d: set mcu enable error, rc=%d\n", __LINE__);
+			pr_err("%d: set mcu enable error, rc=%d\n", __LINE__, rc);
 			goto error;
 		}
 		usleep_range(2500, 2501);
@@ -748,7 +748,7 @@ int opchg_mcu_action(enum mcu_action_mode mode)
 			rc = opchg_switch_dmdm(fastchg_di, DPDM_MODE_WARP);
 			if (rc < 0) {
 				pr_err("%d: switch to warp mode error, rc=%d\n",
-					__LINE__);
+					__LINE__, rc);
 				goto error;
 			}
 		}
@@ -759,19 +759,19 @@ int opchg_mcu_action(enum mcu_action_mode mode)
 		fastchg_di->dpdm_mode = DPDM_MODE_NORMAL;
 		rc = opchg_mcu_enable(fastchg_di, false);
 		if (rc < 0) {
-			pr_err("%d: set mcu disable error, rc=%d\n", __LINE__);
+			pr_err("%d: set mcu disable error, rc=%d\n", __LINE__, rc);
 			goto error;
 		}
 		usleep_range(1000, 1001);
 		rc = opchg_mcu_enable(fastchg_di, true);
 		if (rc < 0) {
-			pr_err("%d: set mcu enable error, rc=%d\n", __LINE__);
+			pr_err("%d: set mcu enable error, rc=%d\n", __LINE__, rc);
 			goto error;
 		}
 		usleep_range(5000, 5001);
 		rc = opchg_mcu_enable(fastchg_di, false);
 		if (rc < 0) {
-			pr_err("%d: set mcu disable error, rc=%d\n", __LINE__);
+			pr_err("%d: set mcu disable error, rc=%d\n", __LINE__, rc);
 			goto error;
 		}
 		usleep_range(1000, 1001);
@@ -787,7 +787,7 @@ int opchg_mcu_action(enum mcu_action_mode mode)
 		fastchg_di->dpdm_mode = DPDM_MODE_NORMAL;
 		rc = opchg_mcu_enable(fastchg_di, true);
 		if (rc < 0) {
-			pr_err("%d: set mcu enable error, rc=%d\n", __LINE__);
+			pr_err("%d: set mcu enable error, rc=%d\n", __LINE__, rc);
 			goto error;
 		}
 		usleep_range(5000, 5001);
@@ -797,19 +797,19 @@ int opchg_mcu_action(enum mcu_action_mode mode)
 			(void)opchg_switch_dmdm(fastchg_di, DPDM_MODE_NORMAL);
 		rc = opchg_mcu_enable(fastchg_di, true);
 		if (rc < 0) {
-			pr_err("%d: set mcu enable error, rc=%d\n", __LINE__);
+			pr_err("%d: set mcu enable error, rc=%d\n", __LINE__, rc);
 			goto error;
 		}
 		usleep_range(5000, 5001);
 		rc = opchg_mcu_enable(fastchg_di, false);
 		if (rc < 0) {
-			pr_err("%d: set mcu disable error, rc=%d\n", __LINE__);
+			pr_err("%d: set mcu disable error, rc=%d\n", __LINE__, rc);
 			goto error;
 		}
 		usleep_range(10000, 10001);
 		rc = opchg_mcu_enable(fastchg_di, true);
 		if (rc < 0) {
-			pr_err("%d: set mcu enable error, rc=%d\n", __LINE__);
+			pr_err("%d: set mcu enable error, rc=%d\n", __LINE__, rc);
 			goto error;
 		}
 		usleep_range(2500, 2501);
@@ -825,7 +825,7 @@ int opchg_mcu_action(enum mcu_action_mode mode)
 		rc = opchg_switch_dmdm(fastchg_di, DPDM_MODE_WARP);
 		if (rc < 0) {
 			pr_err("%d: switch to warp mode error, rc=%d\n",
-				__LINE__);
+				__LINE__, rc);
 			goto error;
 		}
 		fastchg_di->dpdm_mode = DPDM_MODE_WARP;
