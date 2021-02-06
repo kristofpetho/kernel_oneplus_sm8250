@@ -960,7 +960,7 @@ static long bt_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 		if (bt_power_pdata->bt_gpio_sys_rst > 0) {
 			value = (long)gpio_get_value(
 				bt_power_pdata->bt_gpio_sys_rst);
-			BT_PWR_ERR("GET_RESET_GPIO(%d) value(%d)",
+			BT_PWR_ERR("GET_RESET_GPIO(%d) value(%ld)",
 				bt_power_pdata->bt_gpio_sys_rst, value);
 			ret = value;
 		} else {
@@ -972,7 +972,7 @@ static long bt_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 		if (bt_power_pdata->bt_gpio_sw_ctrl > 0) {
 			value = (long)gpio_get_value(
 				bt_power_pdata->bt_gpio_sw_ctrl);
-			BT_PWR_ERR("GET_SWCTRL_GPIO(%d) value(%d)",
+			BT_PWR_ERR("GET_SWCTRL_GPIO(%d) value(%ld)",
 				bt_power_pdata->bt_gpio_sw_ctrl,  value);
 			ret = value;
 		} else {
@@ -987,7 +987,7 @@ static long bt_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 					bt_power_pdata->bt_vdd_aon->reg))) {
 			value = (int)regulator_get_voltage(
 				bt_power_pdata->bt_vdd_aon->reg);
-			BT_PWR_ERR("GET_VDD_AON_LDO(%d) value(%d)",
+			BT_PWR_ERR("GET_VDD_AON_LDO(%pR) value(%ld)",
 				bt_power_pdata->bt_vdd_aon, value);
 			ret = value;
 		} else {
@@ -1002,7 +1002,7 @@ static long bt_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 					bt_power_pdata->bt_vdd_dig->reg))) {
 			value = (int)regulator_get_voltage(
 				bt_power_pdata->bt_vdd_dig->reg);
-			BT_PWR_ERR("GET_VDD_DIG_LDO(%d) value(%d)",
+			BT_PWR_ERR("GET_VDD_DIG_LDO(%pR) value(%ld)",
 				bt_power_pdata->bt_vdd_dig, value);
 			ret = value;
 		} else {
@@ -1017,7 +1017,7 @@ static long bt_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 					bt_power_pdata->bt_vdd_rfa1->reg))) {
 			value = (int)regulator_get_voltage(
 				bt_power_pdata->bt_vdd_rfa1->reg);
-			BT_PWR_ERR("GET_VDD_RFA1_LDO(%d) value(%d)",
+			BT_PWR_ERR("GET_VDD_RFA1_LDO(%pR) value(%ld)",
 				bt_power_pdata->bt_vdd_rfa1, value);
 			ret = value;
 		} else {
@@ -1032,7 +1032,7 @@ static long bt_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 					bt_power_pdata->bt_vdd_rfa2->reg))) {
 			value = (int)regulator_get_voltage(
 				bt_power_pdata->bt_vdd_rfa2->reg);
-			BT_PWR_ERR("GET_VDD_RFA2_LDO(%d) value(%d)",
+			BT_PWR_ERR("GET_VDD_RFA2_LDO(%pR) value(%ld)",
 				bt_power_pdata->bt_vdd_rfa2, value);
 			ret = value;
 		}  else  {
