@@ -916,7 +916,7 @@ static ssize_t iowait_read(struct file *filp, char __user *buff, size_t count, l
 	int type = OHM_SCHED_IOWAIT;
 
 	len = sprintf(page,"iowait_ctrl: %s\n""iowait_logon: %s\n""iowait_trig: %s\n" \
-				"iowait_delta_ms: %u\n""iowait_low_thresh_ms: %u\n""iowait_high_thresh_ms: %u\n" \
+				"iowait_delta_ms: %llu\n""iowait_low_thresh_ms: %u\n""iowait_high_thresh_ms: %u\n" \
 				"iowait_all_max_ms: %llu\n""iowait_all_high_cnt: %llu\n""iowait_all_low_cnt: %llu\n" \
 				"iowait_all_total_ms: %llu\n""iowait_all_total_cnt: %llu\n" \
 				"iowait_fg_max_ms: %llu\n""iowait_fg_high_cnt: %llu\n""iowait_fg_low_cnt: %llu\n" \
@@ -1324,7 +1324,7 @@ static ssize_t cpu_rtime_read(struct file *filp, char __user *buff, size_t count
 			if(j != 0 )
 				len += sprintf(page+len,"cpu%d_%s_thresh_count: %llu\n", i, thresh_list[j], rt_para[i].thresh_cnt[j]);
 		else
-			len += sprintf(page+len,"cpu%d_%s_thresh_count: %d\n", i, thresh_list[j], rt_para[i].thresh_cnt[j]);
+			len += sprintf(page+len,"cpu%d_%s_thresh_count: %llu\n", i, thresh_list[j], rt_para[i].thresh_cnt[j]);
                 }
 	}
 

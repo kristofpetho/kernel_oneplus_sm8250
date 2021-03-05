@@ -1685,10 +1685,10 @@ static int update_thermal_target(struct thermal_zone_device *tz, unsigned long v
 	int ret = -1;
 	int temperature = 0, trip = 0;
 
-	pr_info("%s::val = %ul, thermal_type = %d\n", __func__, val, thermal_type);
+	pr_info("%s::val = %lu, thermal_type = %d\n", __func__, val, thermal_type);
 
 	if (val > THERMAL_MAX_MASK - 1) {
-		pr_err("%s: The input parameter is illegal, val = %ul\n", __func__, val);
+		pr_err("%s: The input parameter is illegal, val = %lu\n", __func__, val);
 		return -EINVAL;
 	}
 

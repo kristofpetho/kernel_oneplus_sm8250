@@ -4099,7 +4099,7 @@ static int proc_clock_rate_show(struct seq_file *file, void *data)
 
 	val = clk_get_rate(core->hw->clk);
 
-	seq_printf(file, "%d\n", val);
+	seq_printf(file, "%llu\n", val);
 
 	if (core->ops->bus_vote)
 		core->ops->bus_vote(core->hw, false);

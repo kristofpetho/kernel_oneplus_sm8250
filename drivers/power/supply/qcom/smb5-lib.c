@@ -4038,7 +4038,7 @@ int smblib_set_prop_dc_reset(struct smb_charger *chg)
 
 	rc = smblib_write(chg, DCIN_CMD_PON_REG, DCIN_PON_BIT | MID_CHG_BIT);
 	if (rc < 0) {
-		smblib_err(chg, "Couldn't write %d to DCIN_CMD_PON_REG rc=%d\n",
+		smblib_err(chg, "Couldn't write %lu to DCIN_CMD_PON_REG rc=%d\n",
 			DCIN_PON_BIT | MID_CHG_BIT, rc);
 		return rc;
 	}
@@ -6945,7 +6945,7 @@ static void smblib_handle_hvdcp_3p0_auth_done(struct smb_charger *chg,
 		if (!chg->apsd_ext_timeout &&
 				!timer_pending(&chg->apsd_timer)) {
 			smblib_dbg(chg, PR_MISC,
-				"APSD Extented timer started at %lld\n",
+				"APSD Extented timer started at %u\n",
 				jiffies_to_msecs(jiffies));
 
 			mod_timer(&chg->apsd_timer,
@@ -10310,7 +10310,7 @@ static void op_otg_icl_contrl(struct smb_charger *chg)
 			if (rc)
 				smblib_err(chg, "Couldn't set OTG_ICL property, rc=%d\n", rc);
 		} else {
-			smblib_err(chg, "It's no op_psy.\n", rc);
+			smblib_err(chg, "It's no op_psy.\n");
 		}
 	} else {
 #endif
@@ -12260,7 +12260,7 @@ static void smbchg_re_det_work(struct work_struct *work)
 	    (chg->real_charger_type == POWER_SUPPLY_TYPE_USB_HVDCP ||
 	     chg->real_charger_type == POWER_SUPPLY_TYPE_USB_HVDCP_3 ||
 	     chg->real_charger_type == POWER_SUPPLY_TYPE_USB_HVDCP_3P5)) {
-		pr_info("qc charger, return\n", __func__);
+		pr_info("%s() qc charger, return\n", __func__);
 		chg->redet_count = 0;
 		return;
 	}
@@ -14024,7 +14024,7 @@ static void apsd_timer_cb(struct timer_list *tm)
 	struct smb_charger *chg = container_of(tm, struct smb_charger,
 							apsd_timer);
 
-	smblib_dbg(chg, PR_MISC, "APSD Extented timer timeout at %lld\n",
+	smblib_dbg(chg, PR_MISC, "APSD Extented timer timeout at %u\n",
 			jiffies_to_msecs(jiffies));
 
 	chg->apsd_ext_timeout = true;

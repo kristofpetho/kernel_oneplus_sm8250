@@ -876,7 +876,7 @@ void ht_collect_perf_data(struct work_struct *work)
 
 		/* create perf event */
 		ht_logv(
-				"rtg_task: comm: %s, pid: %d, tgid: %d, fcnt: %u, fpeak: %u, rtg_cnt: %lu, rtg_peak: %lu, ts: %lld\n",
+				"rtg_task: comm: %s, pid: %d, tgid: %d, fcnt: %u, fpeak: %u, rtg_cnt: %u, rtg_peak: %u, ts: %lld\n",
 				rtg_task->comm, rtg_task->pid, rtg_task->tgid,
 				rtg_task->f_cnt, rtg_task->f_peak,
 				rtg_task->rtg_cnt, rtg_task->rtg_peak,
@@ -1050,7 +1050,7 @@ static void do_fps_boost(unsigned int val, unsigned int period_us)
 	u64 ddr_target = 100; /* default value */
 	struct cc_command cc;
 
-	ht_logv("boost handler: %llu\n", val);
+	ht_logv("boost handler: %u\n", val);
 
 	if (val > 0) {
 		/* ais version boost */
@@ -1119,7 +1119,7 @@ static void do_fps_boost(unsigned int val, unsigned int period_us)
 			ddr_target = ddr_find_target(ddr_target);
 			prev_ddr_target = ddr_find_target(prev_ddr_target/1000000);
 			if (ddrfreq_hispeed_enable && ddrfreq_hispeed > ddr_target) {
-				ht_logv("boost ddr hispeed from %u to %u\n", ddr_target, ddrfreq_hispeed);
+				ht_logv("boost ddr hispeed from %llu to %u\n", ddr_target, ddrfreq_hispeed);
 				ddr_target = ddrfreq_hispeed;
 			}
 			cc.params[0] = ddr_target;
@@ -1133,7 +1133,7 @@ static void do_fps_boost(unsigned int val, unsigned int period_us)
 	if (val > 0) {
 		for (i = 0; i < HT_CLUSTERS; ++i) {
 			if (boost_cluster[i]) {
-				ht_logv("boost cluster %d from %lu to %lu, ddr from %llu to %llu. ais %d\n",
+				ht_logv("boost cluster %d from %u to %u, ddr from %llu to %llu. ais %d\n",
 						i, orig[i], cur[i], prev_ddr_target, ddr_target, ais_active);
 			}
 		}
@@ -1804,7 +1804,7 @@ static inline void ht_cpuload_helper(int clus, int cpus, struct cpuload_info *cl
 
 static inline void ht_dump_parcel(struct ai_parcel *p)
 {
-	ht_logv("%s: dump pid %u fps %u volt %llu current %llu skin %lu\n",
+	ht_logv("%s: dump pid %u fps %u volt %u current %u skin %u\n",
 		__func__, p->pid, p->fps, p->volt_now, p->curr_now, p->skin_temp);
 }
 
@@ -2603,7 +2603,7 @@ static int get_util(bool isRender, int *num)
 		list_for_each_entry(t, &ht_rtg_head, rtg_node) {
 			util += t->ravg.demand_scaled;
 			(*num)++;
-			ht_logv("RTG: comm:%s pid:%d util:%lu\n",
+			ht_logv("RTG: comm:%s pid:%d util:%hu\n",
 					t->comm, t->pid, t->ravg.demand_scaled);
 		}
 		spin_unlock(&ht_rtg_lock);
@@ -2614,7 +2614,7 @@ static int get_util(bool isRender, int *num)
 			if (RenPid != t->pid)
 				continue;
 			util = t->ravg.demand_scaled;
-			ht_logv("Render: comm:%s pid:%d util:%lu\n",
+			ht_logv("Render: comm:%s pid:%d util:%hu\n",
 					t->comm, t->pid, t->ravg.demand_scaled);
 			break;
 		}

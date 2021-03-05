@@ -4907,7 +4907,7 @@ kgsl_get_unmapped_area(struct file *file, unsigned long addr,
 			}
 
 			dev_err_ratelimited(device->dev,
-				"kgsl additional info: %s VmSize %lu MaxGapCpu %lu MaxGapGpu %lu VA_rnd 0x%llx\n"
+				"kgsl additional info: %s VmSize %lu MaxGapCpu %lu MaxGapGpu %lu VA_rnd 0x%lx\n"
 				, current->group_leader->comm, mm->total_vm, largest_gap_cpu
 				, largest_gap_gpu, mm->va_feature_rnd);
 		}
