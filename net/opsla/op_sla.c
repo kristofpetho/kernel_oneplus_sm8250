@@ -1315,7 +1315,7 @@ static int handle_top_app_skb(struct nf_conn *ct, struct sk_buff *skb,
 			} else {
 #ifdef CONFIG_SLA_ALGO
 				if (op_sla_debug)
-					pr_info("[op_sla] %s: index: %x , dr: %d , dqc: %d, dfqt: %lu, time: %d\n",
+					pr_info("[op_sla] %s: index: %x , dr: %d , dqc: %d, dfqt: %lu, time: %lu\n",
 						__func__,
 						WLAN_INDEX,
 						op_sla_info[WLAN_INDEX].dns_refuse,
@@ -1324,7 +1324,7 @@ static int handle_top_app_skb(struct nf_conn *ct, struct sk_buff *skb,
 						time_now);
 
 				if (op_sla_debug)
-					pr_info("[op_sla] %s: index: %x , dr: %d , dqc: %d, dfqt: %lu, time: %d\n",
+					pr_info("[op_sla] %s: index: %x , dr: %d , dqc: %d, dfqt: %lu, time: %lu\n",
 						__func__,
 						CELLULAR_INDEX,
 						op_sla_info[CELLULAR_INDEX].dns_refuse,
