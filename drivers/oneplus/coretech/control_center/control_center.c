@@ -1284,7 +1284,7 @@ static long cc_ctl_ioctl(struct file *file, unsigned int cmd, unsigned long __us
 
 	CC_TIME_START(begin);
 
-	cc_logv("%s: cmd: %u, arg: %lu\n", __func__, CC_IOC_COMMAND, arg);
+	cc_logv("%s: cmd: %lu, arg: %lu\n", __func__, CC_IOC_COMMAND, arg);
 	switch (cmd) {
 	case CC_IOC_COMMAND:
 		{
@@ -1513,7 +1513,7 @@ static int cc_dump_list_show(char *buf, const struct kernel_param *kp)
 		++size;
 	}
 	if (size)
-		cnt += snprintf(buf + cnt, PAGE_SIZE - cnt, "\n", rq->idx);
+		cnt += snprintf(buf + cnt, PAGE_SIZE - cnt, "%d\n", rq->idx);
 	cnt += snprintf(buf + cnt, PAGE_SIZE - cnt, "request list: size: %d\n", size);
 
 	/* pending list */
@@ -1523,7 +1523,7 @@ static int cc_dump_list_show(char *buf, const struct kernel_param *kp)
 		++size;
 	}
 	if (size)
-		cnt += snprintf(buf + cnt, PAGE_SIZE - cnt, "\n", rq->idx);
+		cnt += snprintf(buf + cnt, PAGE_SIZE - cnt, "%d\n", rq->idx);
 	cnt += snprintf(buf + cnt, PAGE_SIZE - cnt, "pending list: size: %d\n", size);
 
 	spin_unlock(&cc_async_lock);
@@ -1683,7 +1683,7 @@ static int cc_ccdm_status_show(char *buf, const struct kernel_param *kp)
 
 	for (i = 0; i < 3; ++i) {
 		cnt += snprintf(buf + cnt, PAGE_SIZE - cnt,
-		"tb_freq_boost: clus %lld, extra util %lld\n",
+		"tb_freq_boost: clus %d, extra util %lld\n",
 		i, info.tb_freq_boost[i]);
 	}
 	cnt += snprintf(buf + cnt, PAGE_SIZE - cnt,
