@@ -566,7 +566,7 @@ int f2fs_get_node_info(struct f2fs_sb_info *sbi, nid_t nid,
 	node_info_from_raw_nat(ni, &ne);
 
 	if (nid == 3)
-		f2fs_info(sbi, "%s: roo node, nid:3, nat block:%d, block addr:%u, ino:%d\n",
+		f2fs_info(sbi, "%s: roo node, nid:3, nat block:%lu, block addr:%u, ino:%d\n",
 				__func__, index, ni->blk_addr, ni->ino);
 
 	f2fs_put_page(page, 1);

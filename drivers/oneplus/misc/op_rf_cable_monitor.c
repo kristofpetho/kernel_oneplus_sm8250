@@ -251,7 +251,7 @@ static ssize_t rf_factory_mode_proc_write_func(struct file *file,
     if (ret < 0)
         return ret;
 
-    pr_err("%s: input : %d\n", enable, __func__);
+    pr_err("%s: input : %d\n", __func__, enable);
     irq_cable_enable(0);
     rf_cable_data->is_rf_factory_mode = enable;
     if (!rf_cable_data->is_rf_factory_mode) {
@@ -516,7 +516,7 @@ static int op_rf_cable_probe(struct platform_device *pdev)
 	pr_err("cable uevent init\n");
 	rf_uevent_class = class_create(THIS_MODULE, "sdx5x_rf_cable");
 	if (IS_ERR(rf_uevent_class)) {
-		pr_err("%s: class_create fail - %d!\n", __func__,
+		pr_err("%s: class_create fail - %ld!\n", __func__,
 				PTR_ERR(rf_uevent_class));
 		return PTR_ERR(rf_uevent_class);
 	}
@@ -524,7 +524,7 @@ static int op_rf_cable_probe(struct platform_device *pdev)
 	rf_uevent_device = device_create(rf_uevent_class, rf_cable_data->dev,
 			MKDEV(0, 0), NULL, "rf_cable");
 	if (IS_ERR(rf_uevent_device)) {
-		pr_err("%s: rf_uevent_device fail - %d!\n", __func__,
+		pr_err("%s: rf_uevent_device fail - %ld!\n", __func__,
 				PTR_ERR(rf_uevent_device));
 		return PTR_ERR(rf_uevent_device);
 	}

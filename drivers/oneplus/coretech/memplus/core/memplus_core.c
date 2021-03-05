@@ -1378,7 +1378,7 @@ static long memplus_sub_ioctl(unsigned int cmd, void __user *parg)
 				break;
 			}
 			if (is_fg(uid)) {
-				pr_err("task %s(pid:%d uid:%d) is top app\n", task->comm, pid, uid);
+				pr_err("task %s(pid:%lu uid:%d) is top app\n", task->comm, pid, uid);
 				if (copy_to_user(parg, &size, sizeof(unsigned long)))
 					ret = -EFAULT;
 				break;
@@ -1399,7 +1399,7 @@ static long memplus_sub_ioctl(unsigned int cmd, void __user *parg)
 					}
 				} else {
 					spin_unlock(&task->signal->reclaim_state_lock);
-					pr_err("task %s(pid:%d) is doing swapin, top app?\n",task->comm, pid);
+					pr_err("task %s(pid:%lu) is doing swapin, top app?\n",task->comm, pid);
 				}
 			}
 
