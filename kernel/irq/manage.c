@@ -736,11 +736,14 @@ static ssize_t irq_wakeup_write(struct file *file, const char __user *userstr,
 {
 	char buf[MAX_MSG_SIZE + 1];
 	int irq;
+	int ret;
 
 	if (!len || (len > MAX_MSG_SIZE))
 		return len;
 
-	copy_from_user(buf, userstr, len);
+	ret = copy_from_user(buf, userstr, len);
+	if (ret)
+		pr_debug("Failed to copy userstr: %s\n", __func__);
 
 	if (strncmp(buf, "n", 1) != 0)
 		return len;
