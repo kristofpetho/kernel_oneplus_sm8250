@@ -123,6 +123,7 @@ static ssize_t fan_store(struct device *dev, struct device_attribute *attr,
 {
 	long val;
 	struct max31760 *pdata;
+	int ret;
 
 	pdata =  dev_get_drvdata(dev);
 	if (!pdata) {
@@ -130,7 +131,10 @@ static ssize_t fan_store(struct device *dev, struct device_attribute *attr,
 		return -ENODEV;
 	}
 
-	kstrtol(buf, 0, &val);
+	ret = kstrtol(buf, 0, &val);
+	if (ret)
+		pr_debug("Failed to convert str to long: %s\n", __func__);
+
 	pr_debug("%s, count:%lu  val:%lx, buf:%s\n",
 				 __func__, count, val, buf);
 

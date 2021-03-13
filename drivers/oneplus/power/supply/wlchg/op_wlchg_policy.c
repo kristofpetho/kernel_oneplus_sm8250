@@ -5197,6 +5197,7 @@ static ssize_t proc_wireless_ftm_mode_write(struct file *file,
 {
 	char buffer[5] = { 0 };
 	int val;
+	int ret;
 
 	chg_err("%s: len[%lu] start.\n", __func__, len);
 	if (len > 5) {
@@ -5209,7 +5210,9 @@ static ssize_t proc_wireless_ftm_mode_write(struct file *file,
 	}
 
 	chg_err("buffer=%s", buffer);
-	kstrtoint(buffer, 0, &val);
+	ret = kstrtoint(buffer, 0, &val);
+	if (ret)
+		pr_debug("Failed conversion");
 	chg_err("val = %d", val);
 
 	if (val == 1) {
@@ -5262,6 +5265,7 @@ static ssize_t proc_wireless_tx_write(struct file *file, const char __user *buf,
 	char buffer[5] = { 0 };
 	struct op_chg_chip *chip = g_op_chip;
 	int val;
+	int ret;
 
 	if (chip == NULL) {
 		chg_err("%s: wlchg driver is not ready\n", __func__);
@@ -5283,7 +5287,9 @@ static ssize_t proc_wireless_tx_write(struct file *file, const char __user *buf,
 	}
 
 	chg_err("buffer=%s", buffer);
-	kstrtoint(buffer, 0, &val);
+	ret = kstrtoint(buffer, 0, &val);
+	if (ret)
+		pr_debug("Failed conversion");
 	chg_err("val = %d", val);
 
 	if (val == 1) {
@@ -5347,6 +5353,7 @@ static ssize_t proc_wireless_quiet_mode_write(struct file *file, const char __us
 	char buffer[3] = { 0 };
 	struct op_chg_chip *chip = g_op_chip;
 	int val;
+	int ret;
 
 	if (chip == NULL) {
 		chg_err("%s: wlchg driver is not ready\n", __func__);
@@ -5363,7 +5370,9 @@ static ssize_t proc_wireless_quiet_mode_write(struct file *file, const char __us
 	}
 
 	chg_err("buffer=%s", buffer);
-	kstrtoint(buffer, 0, &val);
+	ret = kstrtoint(buffer, 0, &val);
+	if (ret)
+		pr_debug("Failed conversion");
 	chg_err("val = %d", val);
 	chip->quiet_mode_need = (val == 1) ? true : false;
 	return count;
@@ -5596,6 +5605,7 @@ static ssize_t proc_wireless_rx_write(struct file *file, const char __user *buf,
 	char buffer[5] = { 0 };
 	struct op_chg_chip *chip = g_op_chip;
 	int val;
+	int ret;
 
 	if (chip == NULL) {
 		chg_err("%s: wlchg driver is not ready\n", __func__);
@@ -5612,7 +5622,9 @@ static ssize_t proc_wireless_rx_write(struct file *file, const char __user *buf,
 	}
 
 	chg_err("buffer=%s", buffer);
-	kstrtoint(buffer, 0, &val);
+	ret = kstrtoint(buffer, 0, &val);
+	if (ret)
+		pr_debug("Failed conversion");
 	chg_err("val = %d", val);
 
 	if (val == 0) {
