@@ -176,7 +176,7 @@ static void arm_smmu_debug_program_tcu_testbus(struct device *dev,
 		arm_smmu_debug_tcu_testbus_select(phys_addr, tcu_base,
 				PTW_AND_CACHE_TESTBUS, WRITE, reg);
 		if (print)
-			dev_info(dev, "testbus_sel: 0x%lx Index: %d val: 0x%lx\n",
+			dev_info(dev, "testbus_sel: 0x%x Index: %d val: 0x%x\n",
 				 arm_smmu_debug_tcu_testbus_select(phys_addr,
 				 tcu_base, PTW_AND_CACHE_TESTBUS, READ, 0), i,
 				 arm_smmu_debug_tcu_testbus_output(phys_addr));
@@ -215,7 +215,7 @@ void arm_smmu_debug_dump_tcu_testbus(struct device *dev, phys_addr_t phys_addr,
 					tcu_base, ~GENMASK(1, 0),
 					TCU_PTW_TESTBUS_SEL2,
 					TCU_PTW_TESTBUS_SEL2 + 1, 0, false);
-			dev_info(dev, "testbus_sel: 0x%lx Index: %d val: 0x%lx\n",
+			dev_info(dev, "testbus_sel: 0x%x Index: %d val: 0x%x\n",
 				 arm_smmu_debug_tcu_testbus_select(phys_addr,
 				 tcu_base, PTW_AND_CACHE_TESTBUS, READ, 0), i,
 				 arm_smmu_debug_tcu_testbus_output(phys_addr));
@@ -225,7 +225,7 @@ void arm_smmu_debug_dump_tcu_testbus(struct device *dev, phys_addr_t phys_addr,
 	/* program ARM_SMMU_TESTBUS_SEL_HLOS1_NS to select TCU clk testbus*/
 	arm_smmu_debug_tcu_testbus_select(phys_addr, tcu_base,
 			CLK_TESTBUS, WRITE, TCU_CLK_TESTBUS_SEL);
-	dev_info(dev, "Programming Tcu clk gate controller: testbus_sel: 0x%lx\n",
+	dev_info(dev, "Programming Tcu clk gate controller: testbus_sel: 0x%x\n",
 		arm_smmu_debug_tcu_testbus_select(phys_addr, tcu_base,
 						CLK_TESTBUS, READ, 0));
 }
