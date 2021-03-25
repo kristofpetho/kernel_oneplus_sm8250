@@ -78,7 +78,7 @@ static struct game_fps_data {
  * lv == 2 -> wraning error
  * lv >= 3 -> error
  */
-static int ht_log_lv = 1;
+static int ht_log_lv = 2;
 module_param_named(log_lv, ht_log_lv, int, 0664);
 
 /* ais */

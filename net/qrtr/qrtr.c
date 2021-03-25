@@ -33,7 +33,7 @@
 		ipc_log_string(ctx, x, ##__VA_ARGS__); \
 		if (!qrtr_first_msg) { \
 			qrtr_first_msg = 1; \
-			pr_info(x, ##__VA_ARGS__); \
+			pr_debug(x, ##__VA_ARGS__); \
 		} \
 	} while (0)
 

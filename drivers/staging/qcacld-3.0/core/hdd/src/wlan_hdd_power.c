@@ -1687,7 +1687,7 @@ static void wlan_hdd_print_suspend_fail_stats(struct hdd_context *hdd_ctx)
 {
 	struct suspend_resume_stats *stats = &hdd_ctx->suspend_resume_stats;
 
-	hdd_err("ipa:%d, radar:%d, roam:%d, scan:%d, initial_wakeup:%d",
+	hdd_debug("ipa:%d, radar:%d, roam:%d, scan:%d, initial_wakeup:%d",
 		stats->suspend_fail[SUSPEND_FAIL_IPA],
 		stats->suspend_fail[SUSPEND_FAIL_RADAR],
 		stats->suspend_fail[SUSPEND_FAIL_ROAM],

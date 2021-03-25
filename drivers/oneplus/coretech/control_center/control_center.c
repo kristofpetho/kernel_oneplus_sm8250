@@ -938,7 +938,7 @@ static void cc_record_acq(int category, struct cc_command* cc)
 	if (high_cc) {
 		dump_cc(high_cc, __func__, "highest request");
 	} else {
-		cc_logw("%s: can't find any request\n", __func__);
+		cc_logd("%s: can't find any request\n", __func__);
 		return;
 	}
 

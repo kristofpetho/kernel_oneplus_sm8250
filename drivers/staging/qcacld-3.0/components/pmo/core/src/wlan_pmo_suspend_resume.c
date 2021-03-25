@@ -1198,7 +1198,7 @@ QDF_STATUS pmo_core_psoc_send_host_wakeup_ind_to_fw(
 		status = QDF_STATUS_E_FAILURE;
 		goto out;
 	}
-	pmo_info("Host wakeup indication sent to fw");
+	pmo_debug("Host wakeup indication sent to fw");
 
 	status = qdf_wait_for_event_completion(&psoc_ctx->wow.target_resume,
 					PMO_RESUME_TIMEOUT);
@@ -1403,21 +1403,21 @@ int pmo_core_psoc_is_target_wake_up_received(struct wlan_objmgr_psoc *psoc)
 	QDF_STATUS status;
 
 	if (!psoc) {
-		pmo_err("psoc is NULL");
+		pmo_debug("psoc is NULL");
 		ret = -EAGAIN;
 		goto out;
 	}
 
 	status = pmo_psoc_get_ref(psoc);
 	if (status != QDF_STATUS_SUCCESS) {
-		pmo_err("Failed to get psoc reference");
+		pmo_debug("Failed to get psoc reference");
 		ret = -EAGAIN;
 		goto out;
 	}
 
 	psoc_ctx = pmo_psoc_get_priv(psoc);
 	if (pmo_core_get_wow_initial_wake_up(psoc_ctx)) {
-		pmo_err("Target initial wake up received try again");
+		pmo_debug("Target initial wake up received try again");
 		ret = -EAGAIN;
 	}
 
@@ -1436,14 +1436,14 @@ int pmo_core_psoc_clear_target_wake_up(struct wlan_objmgr_psoc *psoc)
 	QDF_STATUS status;
 
 	if (!psoc) {
-		pmo_err("psoc is NULL");
+		pmo_debug("psoc is NULL");
 		ret = -EAGAIN;
 		goto out;
 	}
 
 	status = pmo_psoc_get_ref(psoc);
 	if (status != QDF_STATUS_SUCCESS) {
-		pmo_err("Failed to get psoc reference");
+		pmo_debug("Failed to get psoc reference");
 		ret = -EAGAIN;
 		goto out;
 	}
