@@ -1180,13 +1180,13 @@ int wlan_hdd_bus_suspend_noirq(void)
 
 	errno = wlan_hdd_validate_context(hdd_ctx);
 	if (errno) {
-		hdd_err("Invalid HDD context: errno %d", errno);
+		hdd_debug("Invalid HDD context: errno %d", errno);
 		return errno;
 	}
 
 	hif_ctx = cds_get_context(QDF_MODULE_ID_HIF);
 	if (!hif_ctx) {
-		hdd_err("hif_ctx is null");
+		hdd_debug("hif_ctx is null");
 		return -EINVAL;
 	}
 
@@ -1196,7 +1196,7 @@ int wlan_hdd_bus_suspend_noirq(void)
 
 	errno = ucfg_pmo_psoc_is_target_wake_up_received(hdd_ctx->psoc);
 	if (errno == -EAGAIN) {
-		hdd_err("Firmware attempting wakeup, try again");
+		hdd_debug("Firmware attempting wakeup, try again");
 		wlan_hdd_inc_suspend_stats(hdd_ctx,
 					   SUSPEND_FAIL_INITIAL_WAKEUP);
 	}
@@ -1220,7 +1220,7 @@ resume_hif_noirq:
 	QDF_BUG(!hif_bus_resume_noirq(hif_ctx));
 
 done:
-	hdd_err("suspend_noirq failed, status: %d", errno);
+	hdd_debug("suspend_noirq failed, status: %d", errno);
 
 	return errno;
 }
