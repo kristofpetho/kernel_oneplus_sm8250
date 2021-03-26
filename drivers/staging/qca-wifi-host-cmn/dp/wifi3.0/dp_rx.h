@@ -686,7 +686,6 @@ void dp_rx_desc_pool_free(struct dp_soc *soc,
 void dp_rx_deliver_raw(struct dp_vdev *vdev, qdf_nbuf_t nbuf_list,
 				struct dp_peer *peer);
 
-#ifdef RX_DESC_DEBUG_CHECK
 /**
  * dp_rx_desc_paddr_sanity_check() - paddr sanity for ring desc vs rx_desc
  * @rx_desc: rx descriptor
@@ -701,6 +700,7 @@ bool dp_rx_desc_paddr_sanity_check(struct dp_rx_desc *rx_desc,
 	return (ring_paddr == qdf_nbuf_get_frag_paddr(rx_desc->nbuf, 0));
 }
 
+#ifdef RX_DESC_DEBUG_CHECK
 /*
  * dp_rx_desc_alloc_dbg_info() - Alloc memory for rx descriptor debug
  *  structure
