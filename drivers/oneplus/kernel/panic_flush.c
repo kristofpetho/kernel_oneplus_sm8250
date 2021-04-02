@@ -7,7 +7,7 @@
 ** Activity: [ITN-14106]
 ****************************************************************/
 
-#define DEBUG
+//#define DEBUG
 #include <linux/wait.h>
 #include <linux/module.h>
 #include <linux/delay.h>

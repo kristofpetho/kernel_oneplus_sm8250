@@ -10,25 +10,10 @@
 #define PCC_PARAMS 4
 #define NR_CLU 3
 
-#define pcc_logv(fmt...) \
-	do { \
-		if (pcclog_lv < 1) \
-			pr_info(PCC_TAG fmt); \
-	} while (0)
-
-#define pcc_logi(fmt...) \
-	do { \
-		if (pcclog_lv < 2) \
-			pr_info(PCC_TAG fmt); \
-	} while (0)
-
-#define pcc_logw(fmt...) \
-	do { \
-		if (pcclog_lv < 3) \
-			pr_warn(PCC_TAG fmt); \
-	} while (0)
-
-#define pcc_loge(fmt...) pr_err(PCC_TAG fmt)
+#define pcc_logv(fmt...) pr_debug(PCC_TAG fmt)
+#define pcc_logi(fmt...) pr_debug(PCC_TAG fmt)
+#define pcc_logw(fmt...) pr_warn(PCC_TAG fmt)
+#define pcc_loge(fmt...) pr_debug(PCC_TAG fmt)
 #define pcc_logd(fmt...) pr_debug(PCC_TAG fmt)
 
 static unsigned int cluster_pd[NR_CLU] = {17, 18, 20};

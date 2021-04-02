@@ -14,7 +14,7 @@
 #include "touch_interfaces.h"
 
 #define TPD_DEVICE "touch_interface"
-#define TPD_INFO(a, arg...)  pr_err("[TP]"TPD_DEVICE ": " a, ##arg)
+#define TPD_INFO(a, arg...)  pr_debug("[TP]"TPD_DEVICE ": " a, ##arg)
 #define FIX_I2C_LENGTH 256
 static bool register_is_16bit = 0;
 
