@@ -9,7 +9,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
-#define DEBUG
+//#define DEBUG
 #define pr_fmt(fmt) "qbt1000:%s: " fmt, __func__
 
 #include <linux/delay.h>
