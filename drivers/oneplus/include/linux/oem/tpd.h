@@ -20,24 +20,9 @@
 
 #define TPD_TAG "TPD_DEBUG: "
 
-#define tpd_logv(fmt...) \
-	do { \
-		if (tpd_log_lv < 1) \
-			pr_info(TPD_TAG fmt); \
-	} while (0)
-
-#define tpd_logi(fmt...) \
-	do { \
-		if (tpd_log_lv < 2) \
-			pr_info(TPD_TAG fmt); \
-	} while (0)
-
-#define tpd_logw(fmt...) \
-	do { \
-		if (tpd_log_lv < 3) \
-			pr_warn(TPD_TAG fmt); \
-	} while (0)
-
+#define tpd_logv(fmt...) pr_debug(TPD_TAG fmt)
+#define tpd_logi(fmt...) pr_debug(TPD_TAG fmt)
+#define tpd_logw(fmt...) pr_warn(TPD_TAG fmt)
 #define tpd_loge(fmt...) pr_err(TPD_TAG fmt)
 #define tpd_logd(fmt...) pr_debug(TPD_TAG fmt)
 
