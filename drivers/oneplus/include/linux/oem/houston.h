@@ -24,25 +24,11 @@
 
 #define HT_CTL_NODE "ht_ctl"
 #define HT_TAG "ht_monitor: "
-#define ht_logv(fmt...) \
-	do { \
-		if (ht_log_lv < 1) \
-			pr_info(HT_TAG fmt); \
-	} while (0)
+#define ht_logv(fmt...) pr_debug(HT_TAG fmt)
+#define ht_logi(fmt...) pr_debug(HT_TAG fmt)
+#define ht_logw(fmt...) pr_warn(HT_TAG fmt)
 
-#define ht_logi(fmt...) \
-	do { \
-		if (ht_log_lv < 2) \
-			pr_info(HT_TAG fmt); \
-	} while (0)
-
-#define ht_logw(fmt...) \
-	do { \
-		if (ht_log_lv < 3) \
-			pr_warn(HT_TAG fmt); \
-	} while (0)
-
-#define ht_loge(fmt...) pr_err(HT_TAG fmt)
+#define ht_loge(fmt...) pr_debug(HT_TAG fmt)
 #define ht_logd(fmt...) pr_debug(HT_TAG fmt)
 
 #define FPS_COLS (9)
