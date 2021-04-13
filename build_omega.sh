@@ -25,4 +25,4 @@ echo "Build The Kernel"
 echo 
 
 time make CC=clang O=out -j12
-find /home/kristof/omega-11.0/out/arch/arm64/boot/dts/vendor/qcom -name '*.dtb' -exec cat {} + > /home/kristof/omega-11.0/out/arch/arm64/boot/dtb
+find /home/kristof/omega-11.0_sm8250/out/arch/arm64/boot/dts/vendor/qcom -name '*.dtb' -exec cat {} + > /home/kristof/omega-11.0_sm8250/out/arch/arm64/boot/dtb
