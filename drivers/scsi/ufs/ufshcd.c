@@ -10819,7 +10819,7 @@ static void ufshcd_hba_vreg_set_lpm(struct ufs_hba *hba)
 
 static void ufshcd_hba_vreg_set_hpm(struct ufs_hba *hba)
 {
-	int ret;
+	int ret = 0;
 	struct ufs_vreg_info *info = &hba->vreg_info;
 
 	if (ufshcd_is_link_off(hba) ||
